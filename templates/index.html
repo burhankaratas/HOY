@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <title> HOKUVEAY - Hızlı Okuma Ve Anlama Yazılımı </title>
+{% endblock head %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm" style="margin-top: 150px; margin-bottom: -200px">
+            <img src="../static/images/child.gif" draggable="false">
+        </div>
+        <div class="col-sm">
+            <span id="baslik">
+                <br><br><br><br><br>
+                Hızlı okumanın ücretsiz, <br> eğlenceli ve etkili yolu!
+            </span>
+            <br><br>
+
+                <li class="nav-item" style="list-style-type: none;">
+                    <a href="#" class="nav-link btn btn-primary" id="button"> Başla </a>
+                </li>
+                <li class="nav-item" style="margin-top: 10px; list-style-type: none">
+                    <a href="#" class="nav-link btn-warning" id="button"> Zaten Hesabım Var </a>
+                </li>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Buradan devam et -->
+    </div>
+</div>
+
+<style>
+    #button {
+        color: white;
+        font-weight: 600;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    #baslik {
+        font-size: 30px;
+        font-weight: 900;
+        color: #4c4c4c;
+    }
+</style>
+
+{% endblock body %}
