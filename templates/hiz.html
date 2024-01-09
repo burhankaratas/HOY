@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title> HOKUVEAY - Hız Belirleme </title>
+{% endblock head %}
+
+{% block body %}
+
+<style>
+    .altbaslik {
+        font-size: 40px;
+        font-weight: 900;
+        color: #007bff;
+        display: block;
+    }
+
+    .tanitim {
+        color: white;
+        background-color: #007bff;
+        border: 1px solid white;
+        border-radius: 4px;
+        padding: 0 15px;
+        cursor: pointer;
+        height: 32px;
+        font-size: 14px;
+        transition: all 0.2s ease-in-out;
+        margin: auto;
+     }
+     .tanitim:hover {
+       box-shadow: 1px 1px yellow, 5px 5px yellow, 3px 3px yellow;
+       transform: translateX(-3px);
+     }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm" style="margin-top: 150px; margin-bottom: -200px">
+            <span class="altbaslik" style="text-align: center;">
+                Seviyenizi Belirleyelim
+            </span>
+            <br><br>
+            <div style="text-align: center">
+                <a style="text-decoration: none; color: white; display: inline-block;" href="/"> <div class="tanitim" style="height: 200px; width: 200px;">
+                    <div style="padding: 5px; text-align: start;">
+                     <span style="font-size: 22px;"> Sıfırdan Başlıyorum </span>
+                     <br><br>
+                     <span> Genellikle normal düzeyde okuyan insanlar için tavsiye edilir. </span>
+                    </div>
+                 </div> </a>
+                 <a style="text-decoration: none; color: white; display: inline-block" href="/"> <div class="tanitim" style="height: 200px; width: 200px;">
+                    <div style="padding: 5px; text-align: start;">
+                        <span style="font-size: 22px;"> Biraz/Fazla Hızlı Okuyorum </span>
+                        <br><br>
+                        <span> Dakikada okuduğunuz kelime hesaplanarak belirli bir seviyeden başlatılırsınız. </span>
+                    </div>
+                 </div> </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="container-fluid">
+{% endblock body %}
