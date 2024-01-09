@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title> HOKUVEAY - Hızlı Okuma Ve Anlama Yazılımı </title>
+{% endblock head %}
+
+{% block body %}
+
+<style>
+    #button {
+        color: white;
+        font-weight: 600;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    #baslik {
+        font-size: 30px;
+        font-weight: 900;
+        color: #4c4c4c;
+    }
+
+    .altbaslik {
+        font-size: 40px;
+        font-weight: 900;
+        color: #007bff;
+        display: block;
+    }
+
+    .content {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .app {
+        text-align: center;
+        background-color: #ddf4ff;
+        padding: 50px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm-8" style="margin-top: 150px; margin-bottom: -200px">
+            <span class="altbaslik">
+                Kayıt Olun 
+            </span>
+            <br><br>
+            <form method="post">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email Adresinizi Giriniz: </label>
+                  <input type="email" class="form-control" name="email" required>
+                  <small id="emailHelp" class="form-text text-muted"> Hesabınızı doğrulamak için lütfen geçerli bir email adresi girin.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Kullanıcı Adınızı Giriniz: </label>
+                    <input type="text" class="form-control" name="username" required>
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1"> Şifrenizi Belirleyin: </label>
+                  <input type="password" class="form-control" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1"> Şifrenizi Tekrar Giriniz: </label>
+                    <input type="password" class="form-control" name="passwordAgain" required>
+                  </div>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                  <label class="form-check-label" for="exampleCheck1"> <a href="/kosullar" style="color: blue; text-decoration: none"> Koşulları </a> ve <a href="/gizlilik-politikamiz" style="color: blue; text-decoration: none"> Gizlilik Politikanızı</a> Kabul Ediyorum.</label>
+                </div>
+                <button type="submit" class="btn btn-primary"> Kayıt Ol </button>
+              </form>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<div class="container-fluid">
+
+
+
+
+{% endblock body %}

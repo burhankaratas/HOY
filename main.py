@@ -25,7 +25,7 @@ mail = Mail(app)
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
 app.config["MYSQL_PASSWORD"] = ""
-app.config["MYSQL_DB"] = "att"
+app.config["MYSQL_DB"] = "hokuveay"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 mysql = MySQL(app)
 
@@ -36,6 +36,20 @@ app.secret_key = "wp+6#vfg0y3zg^ybi1u=yr)iny5seqf1$oy#7(hg5u!%2-4jv3"
 def index():
     return render_template("index.html")
 
+@app.route("/register", methods = ["GET", "POST"])
+def register():
+    if request.method == "GET":
+        return render_template("register.html")
+    
+
+    elif request.method == "POST":
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        passwordAgain = request.form.get('passwordAgain')
+
+        return redirect(url_for("index"))
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

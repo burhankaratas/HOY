@@ -1,35 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-    <title> HOKUVEAY - Hızlı Okuma Ve Anlama Yazılımı </title>
+<title> HOKUVEAY - Hızlı Okuma Ve Anlama Yazılımı </title>
 {% endblock head %}
 
 {% block body %}
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm" style="margin-top: 150px; margin-bottom: -200px">
-            <img src="../static/images/child.gif" draggable="false">
-        </div>
-        <div class="col-sm">
-            <span id="baslik">
-                <br><br><br><br><br>
-                Hızlı okumanın ücretsiz, <br> eğlenceli ve etkili yolu!
-            </span>
-            <br><br>
-
-                <li class="nav-item" style="list-style-type: none;">
-                    <a href="#" class="nav-link btn btn-primary" id="button"> Başla </a>
-                </li>
-                <li class="nav-item" style="margin-top: 10px; list-style-type: none">
-                    <a href="#" class="nav-link btn-warning" id="button"> Zaten Hesabım Var </a>
-                </li>
-        </div>
-    </div>
-    <div class="row">
-        <!-- Buradan devam et -->
-    </div>
-</div>
 
 <style>
     #button {
@@ -46,6 +21,109 @@
         font-weight: 900;
         color: #4c4c4c;
     }
+
+    .altbaslik {
+        font-size: 40px;
+        font-weight: 900;
+        color: #007bff;
+    }
+
+    .content {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .app {
+        text-align: center;
+        background-color: #ddf4ff;
+        padding: 50px;
+    }
 </style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm" style="margin-top: 150px; margin-bottom: -200px">
+            <img src="../static/images/child.gif" draggable="false" height="350">
+        </div>
+        <div class="col-sm">
+            <span id="baslik">
+                <br><br><br><br><br>
+                Hızlı okumanın ücretsiz, <br> eğlenceli ve etkili yolu! 
+            </span>
+            <br><br>
+
+            <li class="nav-item" style="list-style-type: none;">
+                <a href="/register" class="nav-link btn btn-primary" id="button"> Başla </a>
+            </li>
+            <li class="nav-item" style="margin-top: 10px; list-style-type: none">
+                <a href="#" class="nav-link btn-warning" id="button"> Zaten Hesabım Var </a>
+            </li>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 200px;">
+        <div class="col-sm">
+            <span class="altbaslik">
+                Ücretsiz, Eğlenceli, Etkili...
+            </span>
+            <br><br>
+            <span class="content">
+                Hokuveay ile öğrenmek hem eğlencelidir hem de araştırmalarımız Hokuveay'ın işe yaradığını gösterir!
+                Hızlı ve kısa süren derslerle gerçek hayattaki okuma hızı becerilerini kazanırken puan kazanır ve yeni
+                düzeylerin kilidini açabilirsin.
+            </span>
+        </div>
+        <div class="col-sm" style="text-align: center;">
+            <img src="../static/images/speed.png" draggable="false" height="300">
+        </div>
+    </div>
+    <div class="row" style="background-color: #4c4c4c; color: white; padding: 50px; margin-top: 50px">
+        <div class="col-sm">
+            <span class="altbaslik">
+                Ücretsiz, Eğlenceli, Etkili...
+            </span>
+            <br><br>
+            <span class="content">
+                Hokuveay ile öğrenmek hem eğlencelidir hem de araştırmalarımız Hokuveay'ın işe yaradığını gösterir!
+                Hızlı ve kısa süren derslerle gerçek hayattaki okuma hızı becerilerini kazanırken puan kazanır ve yeni
+                düzeylerin kilidini açabilirsin.
+            </span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-sm" style="text-align: center;">
+            <img src="../static/images/pc.gif" draggable="false" height="300">
+        </div>
+        <div class="col-sm">
+            <span class="altbaslik">
+                Ücretsiz, Eğlenceli, Etkili...
+            </span>
+            <br><br>
+            <span class="content">
+                Hokuveay ile öğrenmek hem eğlencelidir hem de araştırmalarımız Hokuveay'ın işe yaradığını gösterir!
+                Hızlı ve kısa süren derslerle gerçek hayattaki okuma hızı becerilerini kazanırken puan kazanır ve yeni
+                düzeylerin kilidini açabilirsin.
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-sm app">
+                <span style="font-size: 60px; color: #042c60; font-weight: bolder">
+                    İstediğin zaman, <br> istediğin yerde <br> öğren!
+                </span>
+                <br><br><br><br><br>
+                <button class="btn btn-dark"
+                    style="padding-left: 15px; padding-right: 15px; padding-top: 10px; padding-bottom: 10px"><i
+                        class="fa-brands fa-apple" style="font-size: 25px;"></i> App Store'dan </button>
+                <button class="btn btn-dark"
+                    style="padding-left: 15px; padding-right: 15px; padding-top: 10px; padding-bottom: 10px"><i
+                        class="fa-brands fa-google-play" style="font-size: 25px"></i> Play Store'dan </button>
+        </div>
+    </div>
+ 
+
 
 {% endblock body %}
