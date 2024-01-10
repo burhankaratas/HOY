@@ -176,7 +176,7 @@ def login():
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    return render_template("index.html")
+    return render_template("dashboard.html")
 
 @app.route("/hiz-belirleme", methods = ["GET", "POST"])
 @login_required
@@ -194,7 +194,7 @@ def hiz():
                 flash("Hızınız zaten belirlenmiş. Sıfırdan başlamanıza gerek yok!", "warning")
                 return redirect(url_for("index"))
             
-            sorgu = "UPDATE users SET Hiz = 100 WHERE Username = %s"
+            sorgu = "UPDATE users SET Hiz = 50 WHERE Username = %s"
             cursor.execute(sorgu, (session["username"],))
 
             mysql.connection.commit()
@@ -220,15 +220,12 @@ def hizolcme():
 
     elif request.method == "POST":
 
-        data = request.get_json()
-        reading_speed = data.get('reading_speed') 
-
-# Burada eksik var unutma
+        okumahizi = request.form.get('okumahizi')
 
         cursor = mysql.connection.cursor()
 
         sorgu = "UPDATE users SET Hiz = %s WHERE Username = %s"
-        cursor.execute(sorgu, (reading_speed , session["username"]))
+        cursor.execute(sorgu, (okumahizi , session["username"]))
 
         mysql.connection.commit()
         cursor.close()
@@ -249,6 +246,10 @@ def logout():
 @app.route("/kurallar")
 def kurallar():
     return render_template("kurallar.html")
+
+@app.route("/kosullar")
+def kosullar():
+    return render_template("kosullar.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

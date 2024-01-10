@@ -21,23 +21,48 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm" style="margin-top: 150px; margin-bottom: -200px">
+        <div class="col-sm" style="margin-top: 130px; margin-bottom: -200px">
             <br><br>
             <span class="altbaslik">
                 Hızınızı Ölçün
             </span>
             <br>
-            <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, quasi? Libero magnam optio eos ipsa
-                voluptatum porro dignissimos sed at. </span>
+            <span> Haydi hızınızı ölçelim! Talimatlar: <br><br>
+                <ol>
+                    <li> Başlat Butonuna basın. </li>
+                    <li> Butona basar basmaz metni sonuna kadar okumaya başlayın. </li>
+                    <li> Okumayı bitirir bitirmez bitir butonuna tıklayın. </li>
+                    <li> Aşağı kısma inin ve size söylenen şekilde okuma hızını girin. </li>
+                    <li> Onayla ve devam et butonuna tıkla ve okuma hızınıza göre sistem sizi gerekli yerden
+                        başlatacaktır! </li>
+                </ol>
+            </span>
 
 
             <br><br><br><br><br>
+            <span class="altbaslik">
+                Okuma Metni 
+            </span> <br>
+            <span id="metin">
+                <p> Bir zamanlar küçük bir kasabada, adı unutulmuş eski bir kütüphane bulunmaktaydı. Kütüphane,
+                    kasabanın gizemli ve keşfedilmemiş köşelerinden birinde yer alıyordu. Genç bir kız olan Elif,
+                    meraklı ve maceraperest doğasıyla bu kütüphaneyi keşfetmeye karar verdi. </p>
 
-            <span style="font-weight: 600;" id="metin">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam atque enim odio magnam odit! Quasi non
-                molestias, repellendus consectetur omnis quos facere maiores ipsum nemo? Velit consequatur libero illo
-                incidunt distinctio? Fuga, reiciendis sequi quia voluptates recusandae optio porro delectus sunt ullam
-                voluptate vitae iste numquam, repudiandae perspiciatis, tempora est!
+                <p> Kütüphanenin kapısını açtığında içeriğin tozlu rafları arasında kaybolmuş eski kitaplarla dolu
+                    olduğunu gördü. Ancak Elif, bir kitabın özel bir güce sahip olduğunu keşfetti. Kitap, zamanı
+                    manipüle etme yeteneğine sahipti ve Elif'i geçmişe götürdü.</p>
+
+                <p> Geçmişte, Elif farklı zaman dilimlerinde kasabanın yaşadığı olayları izledi. Görünmez bir izleyici
+                    gibi, kasabanın tarihine tanıklık etti. Ancak, geçmişi değiştirmeye çalıştığında, gelecekte meydana
+                    gelecek olayların nasıl etkileneceğini öğrendi. </p>
+
+                <p> Sonunda, Elif kasabanın geleceğini korumak için geçmişteki hataları düzeltmeye karar verdi. Kitabın
+                    gücünü kullanarak kasabanın kaderini değiştirdi ve insanların hayatlarına olumlu dokunuşlar yaptı.
+                    Elif, kasabanın kahramanı olarak anıldı ve eski kütüphane, kasabanın ışıldayan bir hazine yuvasına
+                    dönüştü. </p>
+
+                <p> Böylece, Elif'in merakı ve cesareti, küçük kasabanın kaderini sonsuza kadar değiştirdi. </p>
+
             </span>
 
             <br><br>
@@ -49,7 +74,13 @@
             </div>
             <br><br>
             <form action="{{ url_for('hizolcme') }}" method="post">
-                <button class="btn btn-primary"> Onayla Ve Devam Et </button>
+                <div class="form-group">
+                    <label for="exampleInputEmail1"> Okuma Hızınız: </label>
+                    <input type="text" class="form-control" name="okumahizi" required>
+                    <small class="form-text text-muted"> Güvenlik için yukarıda verilen okuma hızını
+                        giriniz. Örn: 530, 220, 122 </small>
+                </div>
+                <button type="submit" class="btn btn-primary"> Onayla Ve Devam Et </button>
             </form>
         </div>
     </div>
@@ -63,7 +94,7 @@
 
 
     <script>
-        
+
         function sendReadingSpeedToServer(readingSpeed) {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/update_speed", true);
@@ -97,7 +128,6 @@
             sendReadingSpeedToServer(okumaHizi);
         });
 
-        <!-- Burada eksik var unutma -->
 
     </script>
     {% endblock body %}
