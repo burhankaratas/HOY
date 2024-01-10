@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title> HOKUVEAY - Hız Ölçme Testi </title>
+{% endblock head %}
+
+{% block body %}
+
+<script>
+
+</script>
+
+<style>
+    .altbaslik {
+        font-size: 40px;
+        font-weight: 900;
+        color: #007bff;
+        display: block;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm" style="margin-top: 150px; margin-bottom: -200px">
+            <br><br>
+            <span class="altbaslik">
+                Hızınızı Ölçün
+            </span>
+            <br>
+            <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, quasi? Libero magnam optio eos ipsa
+                voluptatum porro dignissimos sed at. </span>
+
+
+            <br><br><br><br><br>
+
+            <span style="font-weight: 600;" id="metin">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam atque enim odio magnam odit! Quasi non
+                molestias, repellendus consectetur omnis quos facere maiores ipsum nemo? Velit consequatur libero illo
+                incidunt distinctio? Fuga, reiciendis sequi quia voluptates recusandae optio porro delectus sunt ullam
+                voluptate vitae iste numquam, repudiandae perspiciatis, tempora est!
+            </span>
+
+            <br><br>
+            <div style="text-align: center;">
+                <button class="btn btn-primary" id="baslatbutton"> Başlat </button>
+                <button class="btn btn-danger" id="finishbutton"> Bitir </button>
+
+                <span id="okumahizi" name="okumahizi"> </span>
+            </div>
+            <br><br>
+            <form action="{{ url_for('hizolcme') }}" method="post">
+                <button class="btn btn-primary"> Onayla Ve Devam Et </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="container-fluid">
+
+
+
+    <script>
+        
+        function sendReadingSpeedToServer(readingSpeed) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/update_speed", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify({ "reading_speed": readingSpeed }));
+        }
+
+        let metin = document.querySelector("#metin");
+        let baslatbutton = document.querySelector("#baslatbutton");
+        let finishbutton = document.querySelector("#finishbutton");
+        let okumahizi = document.querySelector("#okumahizi");
+
+        let startTime, endTime;
+
+        baslatbutton.addEventListener("click", function () {
+            startTime = new Date();
+        });
+
+        finishbutton.addEventListener("click", function () {
+            endTime = new Date();
+
+            let metinIcerik = metin.textContent.trim();
+            let metinArray = metinIcerik.split(/\s+/);
+            let kelimeSayisi = metinArray.length;
+
+            let gecenSure = (endTime - startTime) / 1000;
+            let okumaHizi = Math.round((kelimeSayisi / gecenSure) * 60);
+
+            okumahizi.textContent = okumaHizi + " kelime/dakika";
+
+            sendReadingSpeedToServer(okumaHizi);
+        });
+
+        <!-- Burada eksik var unutma -->
+
+    </script>
+    {% endblock body %}

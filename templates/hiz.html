@@ -40,20 +40,27 @@
             </span>
             <br><br>
             <div style="text-align: center">
-                <a style="text-decoration: none; color: white; display: inline-block;" href="/"> <div class="tanitim" style="height: 200px; width: 200px;">
-                    <div style="padding: 5px; text-align: start;">
-                     <span style="font-size: 22px;"> Sıfırdan Başlıyorum </span>
-                     <br><br>
-                     <span> Genellikle normal düzeyde okuyan insanlar için tavsiye edilir. </span>
-                    </div>
-                 </div> </a>
-                 <a style="text-decoration: none; color: white; display: inline-block" href="/"> <div class="tanitim" style="height: 200px; width: 200px;">
-                    <div style="padding: 5px; text-align: start;">
-                        <span style="font-size: 22px;"> Biraz/Fazla Hızlı Okuyorum </span>
-                        <br><br>
-                        <span> Dakikada okuduğunuz kelime hesaplanarak belirli bir seviyeden başlatılırsınız. </span>
-                    </div>
-                 </div> </a>
+                <form method="POST" action="{{ url_for('hiz') }}">
+                    <button type="submit" style="text-decoration: none; color: white; display: inline-block; border: none; background-color: white;" name="baslangic"> 
+                        <div class="tanitim" style="height: 200px; width: 200px;">
+                            <div style="padding: 5px; text-align: start;">
+                                <span style="font-size: 22px;"> Sıfırdan Başlıyorum </span>
+                                <br><br>
+                                <span> Genellikle normal düzeyde okuyan insanlar için tavsiye edilir. </span>
+                            </div>
+                        </div>
+                    </button>
+                    <button type="submit" style="text-decoration: none; color: white; display: inline-block; border: none; background-color: white;" name="ileri"> 
+                        <div class="tanitim" style="height: 200px; width: 200px;">
+                            <div style="padding: 5px; text-align: start;">
+                                <span style="font-size: 22px;"> Biraz/Fazla Hızlı Okuyorum </span>
+                                <br><br>
+                                <span> Dakikada okuduğunuz kelime hesaplanarak belirli bir seviyeden başlatılırsınız. </span>
+                            </div>
+                        </div>
+                    </button>
+                </form>
+                
             </div>
         </div>
     </div>
