@@ -42,27 +42,49 @@
     <div class="daralt" style="margin: auto;">
         <ol style="list-style-type: none; display: inline">
             {% for data in data %}
-            <li>
-                <div class="adim">
-                    <span style="float: right; font-weight: 600">
-                        {{data["Name"]}}. Adım
-                    </span>
-                    <span style="float: left; font-weight:600">
-                        Hız: {{data["LimitOkumaHizi"]}} Kelime/Dk
-                    </span>
+                <li class>
+                    <div class="adim">
+                        <span style="float: right; font-weight: 600">
+                            {{data["Name"]}}. Adım
+                        </span>
+                        <span style="float: left; font-weight:600">
+                            Hız: {{data["LimitOkumaHizi"]}} Kelime/Dk
+                        </span>
+                        <br>
+                    </div>
                     <br>
-                </div>
+                </li>
+                <a href="/ders/{{data['Name']}}/1" style="text-decoration: none;">
+                    <div class="ders">
+                        1. Ders
+                    </div>
+                </a>
                 <br>
-            </li>
-            {% for data in data %}
-            <a href="/ders/{{data['Name']}}" style="text-decoration: none;">
-                <div class="ders">
-                    Ders
-                </div>
-            </a>
-            <br>
-            {% endfor %}
-            <br><br><br><br>
+                <a href="/ders/{{data['Name']}}/2" style="text-decoration: none;">
+                    <div class="ders">
+                        2. Ders
+                    </div>
+                </a>
+                <br>
+                <a href="/ders/{{data['Name']}}/3" style="text-decoration: none;">
+                    <div class="ders">
+                        3. Ders
+                    </div>
+                </a>
+                <br>
+                <a href="/ders/{{data['Name']}}/4" style="text-decoration: none;">
+                    <div class="ders">
+                        4. Ders
+                    </div>
+                </a>
+                <br>
+                <a href="/ders/{{data['Name']}}/5" style="text-decoration: none;">
+                    <div class="ders">
+                        5. Ders
+                    </div>
+                </a>
+                <br>
+                <br><br><br><br>
             {% endfor %}
         </ol>
     </div>

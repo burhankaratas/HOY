@@ -177,21 +177,51 @@ def login():
             flash("Böyle bir kullanıcı bulunamadı. Lütfen tekrar deneyiniz.", "danger")
             return redirect(url_for("login"))
 
-@app.route("/dashboard", methods = ["GET"])
+@app.route("/dashboard", methods=["GET"])
 @login_required
 def dashboard():
     if request.method == "GET":
         cursor = mysql.connection.cursor()
 
         sorgu = "SELECT * FROM adimlar"
-        result = cursor.execute(sorgu)
+        cursor.execute(sorgu)
 
         data = cursor.fetchall()
 
         cursor.close()
 
-        return render_template("dashboard.html", data = data)
+        # Kullanıcının okuma hızına göre hangi adımdan başlayacağını belirle
+        ilk_hiz = int(session.get("ilkhiz", 0))
+        if ilk_hiz < 100:
+            baslangic_adimi = 1
+        elif 100 <= ilk_hiz < 200:
+            baslangic_adimi = 2
+        elif 200 <= ilk_hiz < 300:
+            baslangic_adimi = 3
+        elif 300 <= ilk_hiz < 400:
+            baslangic_adimi = 4
+        elif 400 <= ilk_hiz < 500:
+            baslangic_adimi = 5
+        elif 500 <= ilk_hiz < 600:
+            baslangic_adimi = 6
+        elif 600 <= ilk_hiz < 700:
+            baslangic_adimi = 7
+        elif 700 <= ilk_hiz < 800:
+            baslangic_adimi = 8
+        elif 800 <= ilk_hiz < 900:
+            baslangic_adimi = 9
+        elif 900 <= ilk_hiz < 1000:
+            baslangic_adimi = 10
+        elif 1000 <= ilk_hiz < 1100:
+            baslangic_adimi = 11
+        else:
+            # Kullanıcının okuma hızı 1100'den büyükse en son adımdan başla
+            baslangic_adimi = 11
 
+        # Belirlenen adımdan sonraki verileri al
+        data = data[baslangic_adimi - 1:]
+
+        return render_template("dashboard.html", data=data)
 @app.route("/hiz-belirleme", methods = ["GET", "POST"])
 @login_required
 def hiz():
@@ -359,6 +389,10 @@ def test():
 @app.route("/misyonumuz")
 def misyonumuz():
     return render_template("misyonumuz.html")
+
+@app.route("/sss")
+def sss():
+    return render_template("sss.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
