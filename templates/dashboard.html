@@ -5,9 +5,68 @@
 {% endblock head %}
 
 {% block body %}
+<style>
+    .daralt {
+        width: 450px;
+    }
 
+    @media only screen and (max-width: 1000px) {
+        .daralt {
+            width: 100%;
+        }
+    }
+
+    .adim {
+        padding: 15px;
+        background-color: #3917b3;
+        color: white;
+        border-radius: 10px;
+        margin: auto;
+    }
+
+    .ders {
+        padding: 10px;
+        background-color: #3f8fe4;
+        width: 80%;
+        margin: auto;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .ders:hover {
+        background-color: #3b7fc7;
+        transition: 0.5s;
+    }
+</style>
 <div id="main">
-    Dersler
+    <div class="daralt" style="margin: auto;">
+        <ol style="list-style-type: none; display: inline">
+            {% for data in data %}
+            <li>
+                <div class="adim">
+                    <span style="float: right; font-weight: 600">
+                        {{data["Name"]}}. Adım
+                    </span>
+                    <span style="float: left; font-weight:600">
+                        Hız: {{data["LimitOkumaHizi"]}} Kelime/Dk
+                    </span>
+                    <br>
+                </div>
+                <br>
+            </li>
+            {% for data in data %}
+            <a href="/ders/{{data['Name']}}" style="text-decoration: none;">
+                <div class="ders">
+                    Ders
+                </div>
+            </a>
+            <br>
+            {% endfor %}
+            <br><br><br><br>
+            {% endfor %}
+        </ol>
+    </div>
 </div>
 </div>
+
 {% endblock body %}

@@ -1,20 +1,13 @@
-from flask import Flask,render_template,flash,redirect,url_for,session,logging,request,g,abort,send_file,make_response, Blueprint
+from flask import Flask,render_template,flash,redirect,url_for,session,request
 from flask_mysqldb import MySQL
-from wtforms import Form,StringField,TextAreaField,PasswordField,validators, SubmitField, EmailField, IntegerField
-from passlib.hash import sha512_crypt, sha256_crypt
+from passlib.hash import sha256_crypt
 from flask_mail import Mail, Message
 from functools import wraps
-from urllib.parse import urlencode
-import random
-import smtplib
-import hashlib
-import pdfkit
-from flask_mail import Mail, Message
 import random
 import string
 import datetime
-from bs4 import BeautifulSoup
 from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -159,7 +152,9 @@ def login():
                 session["puan"] = data["Points"]
                 session["email"] = data["Email"]
                 session["id"] = data["ID"]
-                session["ilkhiz"] = data["IlkHiz"]
+                
+                if data["IlkHiz"] != 0:
+                    session["ilkhiz"] = data["IlkHiz"]
 
                 flash("Hesabınıza başarıyla giriş yaptınız...", "primary")
                 
@@ -182,10 +177,20 @@ def login():
             flash("Böyle bir kullanıcı bulunamadı. Lütfen tekrar deneyiniz.", "danger")
             return redirect(url_for("login"))
 
-@app.route("/dashboard")
+@app.route("/dashboard", methods = ["GET"])
 @login_required
 def dashboard():
-    return render_template("dashboard.html")
+    if request.method == "GET":
+        cursor = mysql.connection.cursor()
+
+        sorgu = "SELECT * FROM adimlar"
+        result = cursor.execute(sorgu)
+
+        data = cursor.fetchall()
+
+        cursor.close()
+
+        return render_template("dashboard.html", data = data)
 
 @app.route("/hiz-belirleme", methods = ["GET", "POST"])
 @login_required
@@ -203,8 +208,11 @@ def hiz():
                 flash("Hızınız zaten belirlenmiş. Sıfırdan başlamanıza gerek yok!", "warning")
                 return redirect(url_for("index"))
             
-            sorgu = "UPDATE users SET Hiz = 50 WHERE Username = %s"
+            sorgu = "UPDATE users SET Hiz = 50, IlkHiz = 50 WHERE Username = %s"
             cursor.execute(sorgu, (session["username"],))
+
+            session["ilkhiz"] = 50
+            session["hiz"] = 50
 
             mysql.connection.commit()
             cursor.close()
@@ -236,6 +244,7 @@ def hizolcme():
         sorgu = "UPDATE users SET Hiz = %s, IlkHiz = %s WHERE Username = %s"
         cursor.execute(sorgu, (okumahizi , okumahizi ,session["username"]))
 
+        session["ilkhiz"] = okumahizi
         session["hiz"] = okumahizi
 
         mysql.connection.commit()
@@ -306,13 +315,16 @@ def ayarlar():
 
         return redirect(url_for("ayarlar"))
 
+@app.route("/ders/<string:id>")
+@login_required
+def ders(id):
+    return id
+    
 
-
-@app.route("/ilerleme")
+@app.route("/ilerleme", methods = ["GET"])
 @login_required
 def ilerleme():
-    artis = (session["hiz"] / session["ilkhiz"]) * 1
-    return render_template("ilerleme.html", artis = artis)
+    return render_template("ilerleme.html")
 
 @app.route("/alistirmalar")
 @login_required
