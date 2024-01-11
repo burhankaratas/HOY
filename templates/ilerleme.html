@@ -1,0 +1,43 @@
+{% extends 'applayout.html' %}
+
+{% block head %}
+<title> HOKUVEAY - İlerlemem </title>
+{% endblock head %}
+
+{% block body %}
+<style>
+    .baslikk {
+        font-weight: bolder;
+        color: black;
+        font-size: 22px;
+        display: block;
+    }
+
+    .altbaslik {
+        color: #c2c7c4;
+    }
+
+    .daralt {
+        width: 450px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .daralt {
+            width: 100%;
+        }
+    }
+</style>
+<div id="main">
+    <div class="daralt" style="margin: auto;">
+        <span class="baslikk"> İlerlemeniz </span>
+        <br>
+        <span style="font-weight: bolder;"> İlk Hız: </span> <span> {{session["ilkhiz"]}} Kelime/Dk </span>
+        <br>
+        <span style="font-weight: bolder;"> Aktif Hız: </span> <span> {{session["hiz"]}} Kelime/Dk </span>
+
+        <hr>
+
+        <span style="font-weight: bolder;"> Hız Artışı: </span> <span> %{{artis}} </span>
+    </div>
+</div>
+{% endblock body %}

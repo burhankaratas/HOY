@@ -1,0 +1,65 @@
+{% extends 'applayout.html' %}
+
+{% block head %}
+<title> HOKUVEAY - Profil </title>
+{% endblock head %}
+
+{% block body %}
+<style>
+    .baslikk {
+        font-weight: bolder;
+        color: black;
+        font-size: 22px;
+        display: block;
+    }
+
+    .daralt {
+        width: 450px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .daralt {
+            width: 100%;
+        }
+    }
+</style>
+<div id="main">
+    <div class="daralt" style=" margin: auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <span class="baslikk">
+                        {{session["username"]}}
+                    </span>
+                    <span style="color: #c2c7c4;">
+                        {{session["hiz"]}} Kelime/Dk
+                    </span>
+                    <br><br>
+                    <span style="color: #494a49; display: block"> <i class="fa-solid fa-calendar-days"></i>
+                        {{turkish_tarih}} tarihinde katıldı </span>
+                    <span style="color: #494a49; display: block"> <i class="fa-solid fa-receipt"></i> Temel Abonelik
+                        Hesabı </span>
+                    <hr>
+                    <br>
+                    <span class="baslikk"> İlerleme İstatislikleri </span>
+                    <span style="color: #494a49; display: block"> Herhangi bir istatislik bulunamadı. </span>
+                    <hr>
+                    <br>
+                    <span class="baslikk"> Hesap </span>
+                    <br>
+                    <ol class="list-group" style="list-style-type: none">
+                        <a href="/ayarlar" class="list-group-item list-group-item-action" style="text-decoration: none; color: #494a49"> Hesap
+                            Ayarları </a>
+                        <a href="/sifre-degistir" class="list-group-item list-group-item-action" style="text-decoration: none; color: #494a49">
+                            Şifremi Değiştir </a>
+                        <a href="/logout" class="list-group-item list-group-item-action" style="text-decoration: none; color: #494a49"> Çıkış
+                            Yap </a>
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

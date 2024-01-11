@@ -1,0 +1,77 @@
+{% extends 'applayout.html' %}
+
+{% block head %}
+<title> HOKUVEAY - Ayarlar </title>
+{% endblock head %}
+
+{% block body %}
+<style>
+    .hr {
+        display: block;
+    }
+
+    .daralt {
+        width: 450px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .daralt {
+            width: 100%;
+        }
+
+        .hr {
+            display: none;
+        }
+    }
+</style>
+<div id="main">
+    <div class="daralt" style="margin: auto">
+        <div>
+            <span class="baslik"> Ayarlar </span>
+            <form method="post" style="display: inline;">
+                <button class="btn btn-primary" style="float: right;"> Kaydet </button>
+        </div>
+        <br><br>
+        <label for="basic-url">Kullanıcı Adı</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3"> @ </span>
+            </div>
+            <input name="username" type="text" value="{{session['username']}}" class="form-control" id="basic-url"
+                aria-describedby="basic-addon3">
+        </div>
+
+        <br>
+
+        <label for="basic-url"> E-Posta </label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3"> Mail: </span>
+            </div>
+            <input name="email" type="text" value="{{session['email']}}" class="form-control" id="basic-url"
+                aria-describedby="basic-addon3">
+        </div>
+        </form>
+        <br>
+        <hr class="hr">
+        <br><br>
+
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action"> Parola Sıfırlama </li>
+            <li class="list-group-item list-group-item-action"> Okuma Hızını Değiştir </li>
+            <li class="list-group-item list-group-item-action"> Bildirimler </li>
+        </ul>
+
+        <br><br>
+
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action"> Hata/bug bildir </li>
+            <li class="list-group-item list-group-item-action"> Versiyon: 1.0.0 </li>
+            <li class="list-group-item list-group-item-action">Çıkış Yap </li>
+        </ul>
+
+    </div>
+</div>
+
+<br><br><br><br>
+{% endblock body %}

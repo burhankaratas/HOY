@@ -1,0 +1,181 @@
+<style>
+  #mySidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+    border-right: 1px solid #e5e5e5;
+  }
+
+  #mySidebar .a {
+    padding: 15px 8px 15px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  #mySidebar .a:hover {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+  }
+
+  #rightSidebar {
+    height: 100%;
+    width: 400px;
+    /* Sağ tarafta sabit genişlik */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-left: 1px solid #e5e5e5;
+  }
+
+  #rightSidebar .a {
+    padding: 15px 8px 15px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  #rightSidebar .a:hover {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+  }
+
+  .baslik {
+    font-size: 22px;
+    font-weight: bolder;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+    margin-left: 250px;
+    margin-right: 400px;
+  }
+
+  .bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: none;
+    z-index: 999;
+  }
+
+  .mobilea {
+    margin: auto;
+    margin-left: 15px;
+    color: white;
+  }
+
+  .mobilea:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+
+  @media only screen and (max-width: 1000px) {
+    #mySidebar {
+      display: none;
+    }
+
+    #rightSidebar {
+      display: none;
+    }
+
+    #main {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+
+    .bottom-bar {
+      display: block;
+    }
+
+  }
+</style>
+
+<div id="mySidebar" class="sidebar">
+  <a href="/dashboard">
+    <div style="text-align: center;">
+      <img src="../../static/images/logoblue.png" height="50">
+    </div>
+    <hr>
+    <br>
+  </a>
+  <a href="/dashboard" class="a"><i class="fa-brands fa-leanpub"
+      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Dersler </span> </a>
+  <a href="/alistirmalar" class="a"><i class="fa-solid fa-dumbbell"
+      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Alıştırma Yap </span> </a>
+  <a href="/ilerleme" class="a"><i class="fa-solid fa-bars-progress"
+      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> İlerlemen </span> </a>
+  <a href="/profil" class="a"><i class="fa-solid fa-user"
+      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Profil </span> </a>
+  <a href="/ayarlar" class="a"><i class="fa-solid fa-gear"
+      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Ayarlar </span> </a>
+  <a href="/logout" class="a"><i class="fa-solid fa-right-from-bracket"
+      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Çıkış Yap </span> </a>
+</div>
+
+<div class="bottom-bar">
+  <a class="mobilea" href="/dashboard"><i class="fa-brands fa-leanpub"
+      style="font-size: 40px;"></i> </a>
+  <a class="mobilea" href="/alistirmalar"><i class="fa-solid fa-dumbbell"
+      style="font-size: 40px;"></i> </a>
+  <a class="mobilea" href="/ilerleme"><i class="fa-solid fa-bars-progress"
+      style="font-size: 40px;"></i> </a>
+  <a class="mobilea" href="/profil"><i class="fa-solid fa-user"
+      style="font-size: 40px;"></i> </a>
+  <a class="mobilea" href="/ayarlar"><i class="fa-solid fa-gear"
+      style="font-size: 40px;"></i> </a>
+</div>
+
+<div id="main">
+</div>
+
+<div id="rightSidebar" class="sidebar">
+  <span style="font-size: 15px; display: block"> <i class="fa-solid fa-coins"
+      style="margin-left: 30px; font-size: 20px;"></i> {{session["puan"]}} </span>
+  <br><br>
+  <div
+    style="border: 1px solid #e5e5e5; background: linear-gradient(to bottom, #3498db, #9c9696); padding: 15px; border-radius: 15px; padding-bottom: 30px">
+    <div style="text-align: center">
+      <span class="baslik" style="color: white;"> Hala premiumu <br> keşfetmedin mi? </span>
+      <br>
+      <span style="color: whitesmoke;"> Hokuveay premimuma geçerek alıştırmaların kilidini açın ve reklamlardan
+        kurtulun. </span>
+      <br><br>
+      <button class="btn" style="background-color: white;"> Hokuveay Premiuma Geçin </button>
+      <a href="#" style="display: block; color: white; margin-top: 15px"> Planları İnceleyin </a>
+    </div>
+  </div>
+  <br>
+  <div
+    style="border: 1px solid #e5e5e5; background: linear-gradient(to bottom, #3498db, #9c9696); padding: 15px; border-radius: 15px; padding-bottom: 30px">
+    <div style="text-align: center">
+      <span class="baslik" style="color: white;"> Blog Sayfasına Göz At </span>
+      <br><br>
+      <button class="btn" style="background-color: white;"> Hemen Göz At </button>
+    </div>
+  </div>
+</div>

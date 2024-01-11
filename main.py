@@ -59,7 +59,11 @@ def generate_random_string(length):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    if "logged_in" in session:
+        return redirect(url_for("dashboard"))
+    
+    else:
+        return render_template("index.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -151,12 +155,17 @@ def login():
                 session["username"] = data["Username"]
                 session["hiz"] = data["Hiz"]
                 session["IsActive"] = data["IsActive"]
+                session["dateTime"] = data["DateTime"]
+                session["puan"] = data["Points"]
+                session["email"] = data["Email"]
+                session["id"] = data["ID"]
+                session["ilkhiz"] = data["IlkHiz"]
 
                 flash("Hesabınıza başarıyla giriş yaptınız...", "primary")
                 
                 if data["IsActive"] == False:
                     flash("Lütfen mail adresinize gönderdiğimiz linke tıklayarak hesabınızı aktifleştiriniz.", "warning")
-                    return redirect(url_for("index"))
+                    return redirect(url_for("logout"))
                 
                 else:
                     if data["Hiz"] == 0:
@@ -224,8 +233,10 @@ def hizolcme():
 
         cursor = mysql.connection.cursor()
 
-        sorgu = "UPDATE users SET Hiz = %s WHERE Username = %s"
-        cursor.execute(sorgu, (okumahizi , session["username"]))
+        sorgu = "UPDATE users SET Hiz = %s, IlkHiz = %s WHERE Username = %s"
+        cursor.execute(sorgu, (okumahizi , okumahizi ,session["username"]))
+
+        session["hiz"] = okumahizi
 
         mysql.connection.commit()
         cursor.close()
@@ -233,6 +244,80 @@ def hizolcme():
         flash("Okuma hızınıza göre başlangıç yeriniz ayarlandı!", "primary")
         return redirect(url_for("dashboard"))
 
+@app.route("/profil")
+@login_required
+def profil():
+    utc_tarih = session["dateTime"]
+    utc_datetime = datetime.strptime(utc_tarih, "%a, %d %b %Y %H:%M:%S %Z")
+    turkish_tarih = utc_datetime.strftime("%d %b %Y")
+
+    return render_template("profil.html", turkish_tarih = turkish_tarih)
+
+@app.route("/ayarlar", methods=["GET", "POST"])
+@login_required
+def ayarlar():
+    if request.method == "GET":
+        return render_template("ayarlar.html")
+    
+    elif request.method == "POST":
+        username = request.form.get('username')
+        email = request.form.get('email')
+
+        cursor = mysql.connection.cursor()
+
+        if session["email"] != email or session["username"] != username:
+            # Kullanıcı adı veya e-posta değişmişse kontrol yap
+            if email:
+                sorgu_email = "SELECT * FROM users WHERE Email = %s"
+                cursor.execute(sorgu_email, (email,))
+                data_email = cursor.fetchone()
+
+                # E-posta başka bir kullanıcı tarafından kullanılıyorsa uyarı ver
+                if data_email and data_email["ID"] != session["id"]:
+                    flash("Bu e-posta adresi başka bir kullanıcı tarafından kullanılıyor.", "danger")
+                    return redirect(url_for("ayarlar"))
+
+            if username:
+                sorgu_username = "SELECT * FROM users WHERE Username = %s"
+                cursor.execute(sorgu_username, (username,))
+                data_username = cursor.fetchone()
+
+                # Kullanıcı adı başka bir kullanıcı tarafından kullanılıyorsa uyarı ver
+                if data_username and data_username["ID"] != session["id"]:
+                    flash("Bu kullanıcı adı başka bir kullanıcı tarafından kullanılıyor.", "danger")
+                    return redirect(url_for("ayarlar"))
+
+            # Eğer buraya kadar gelinmişse, güncelleme işlemini gerçekleştir
+            sorgu_update = "UPDATE users SET Username = %s, Email = %s WHERE ID = %s"
+            cursor.execute(sorgu_update, (username, email, session["id"]))
+
+            session["username"] = username
+            session["email"] = email
+            
+            mysql.connection.commit()
+            cursor.close()
+
+            flash("Kullanıcı bilgileriniz güncellendi...", "primary")
+            return redirect(url_for("ayarlar"))
+        
+        # Eğer değişiklik yapılmamışsa uyarı ver
+        else:
+            flash("Herhangi bir değişiklik yapmadınız.", "warning")
+
+        return redirect(url_for("ayarlar"))
+
+
+
+@app.route("/ilerleme")
+@login_required
+def ilerleme():
+    artis = (session["hiz"] / session["ilkhiz"]) * 1
+    return render_template("ilerleme.html", artis = artis)
+
+@app.route("/alistirmalar")
+@login_required
+def alistirmalar():
+    return render_template("alistirmalar.html")
 
     
 @app.route("/logout")
@@ -250,6 +335,18 @@ def kurallar():
 @app.route("/kosullar")
 def kosullar():
     return render_template("kosullar.html")
+
+@app.route("/gizlilik")
+def gizlilik():
+    return render_template("gizlilik.html")
+
+@app.route("/test")
+def test():
+    return render_template("karalama.html")
+
+@app.route("/misyonumuz")
+def misyonumuz():
+    return render_template("misyonumuz.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
