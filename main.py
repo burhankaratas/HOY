@@ -345,7 +345,7 @@ def ayarlar():
 
         return redirect(url_for("ayarlar"))
 
-@app.route("/ders/<string:id>")
+@app.route("/ders/1/<string:id>")
 @login_required
 def ders(id):
     return id

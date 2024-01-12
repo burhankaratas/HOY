@@ -41,8 +41,10 @@
                         Hesabı </span>
                     <hr>
                     <br>
-                    <span class="baslikk"> İlerleme İstatislikleri </span>
-                    <span style="color: #494a49; display: block"> Herhangi bir istatislik bulunamadı. </span>
+                    <span class="baslikk"> İlerleme İstatislikleri </span> <br>
+                    <div>
+                        <canvas id="myChart"></canvas>
+                      </div>
                     <hr>
                     <br>
                     <span class="baslikk"> Hesap </span>
@@ -61,5 +63,31 @@
         </div>
     </div>
 </div>
+<br><br><br>
+<script>
+    var ilkhizdata = "{{ session['ilkhiz'] }}";
+    var aktifhizdata = "{{session['hiz']}}"
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['İlk Hız', 'Aktif Hız'],
+        datasets: [{
+          label: '# Kelime/Dk',
+          data: [ilkhizdata, aktifhizdata],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 
 {% endblock body %}
