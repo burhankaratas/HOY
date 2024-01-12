@@ -345,10 +345,10 @@ def ayarlar():
 
         return redirect(url_for("ayarlar"))
 
-@app.route("/ders/1/<string:id>")
+@app.route("/ders/1/1")
 @login_required
-def ders(id):
-    return id
+def adim1ders1():
+    return render_template("app/adim1ders1.html")
     
 
 @app.route("/ilerleme", methods = ["GET"])
