@@ -348,6 +348,7 @@ def ayarlar():
 @app.route("/ders/1/1")
 @login_required
 def adim1ders1():
+    # fonksiyonları cagırmada bir hata var. Düzelt
     return render_template("app/adim1ders1.html")
     
 
