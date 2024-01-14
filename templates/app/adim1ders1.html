@@ -7,8 +7,9 @@
 {% block body %}
 
 <script>
-    basla()
-    blokokuma(1000, 1, "Deneme amaçlı yazılmış bir metin bakalım nasıl çalışacak")
+    basla(function() {
+        blokokuma(1000, 1, "Deneme amaçlı yazılmış bir metin bakalım nasıl çalışacak");
+    });
 </script>
 
 {% endblock body %}

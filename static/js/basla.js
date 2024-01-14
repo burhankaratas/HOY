@@ -1,4 +1,4 @@
-function basla() {
+function basla(callback) {
     var startDiv = document.createElement('div');
     startDiv.className = 'StartDiv';
     startDiv.style.width = '300px';
@@ -30,7 +30,7 @@ function basla() {
 
     var br1 = document.createElement('br');
     startDiv.appendChild(br1)
-    
+
     var timeoutSpan = document.createElement('span');
     timeoutSpan.className = 'timeout';
     timeoutSpan.style.color = 'white';
@@ -44,6 +44,7 @@ function basla() {
             
             if (i == 0) {
                 startDiv.style.display = "none";
+                callback(); // Callback fonksiyonunu çağır
             }
         }, (5 - i) * 1000);
     }

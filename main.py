@@ -345,7 +345,7 @@ def ayarlar():
 
         return redirect(url_for("ayarlar"))
 
-@app.route("/ders/1/1")
+@app.route("/1/1")
 @login_required
 def adim1ders1():
     # fonksiyonları cagırmada bir hata var. Düzelt

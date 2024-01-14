@@ -23,6 +23,9 @@ function blokokuma(yaziSuresi, kelimeSayisi, yazi) {
 
     let spanElement = document.createElement("span");
     spanElement.style.fontSize = "50px";
+    spanElement.style.padding = "30px";
+    spanElement.style.backgroundColor = "Black";
+    spanElement.style.color = "white";
     spanElement.id = "yaziYer";
 
     let maincontent = document.querySelector(".maincontent")
