@@ -1,6 +1,5 @@
-function blokokuma(yaziSuresi, kelimeSayisi, yazi) {
-    console.log("blokokuma fonksiyonu çağrıldı");
-
+function blokokuma(kelimeSayisi, yazi) {
+    console.log("blokokuma is active")
     let containerDiv = document.createElement("div");
     containerDiv.classList.add("container");
 
@@ -23,22 +22,15 @@ function blokokuma(yaziSuresi, kelimeSayisi, yazi) {
 
     let spanElement = document.createElement("span");
     spanElement.style.fontSize = "50px";
-    spanElement.style.padding = "30px";
-    spanElement.style.backgroundColor = "Black";
+    spanElement.style.padding = "20px";
+    spanElement.style.backgroundColor = "black";
     spanElement.style.color = "white";
     spanElement.id = "yaziYer";
-
-    let maincontent = document.querySelector(".maincontent")
 
     colDiv.appendChild(spanElement);
     rowDiv.appendChild(colDiv);
     containerDiv.appendChild(rowDiv);
-    maincontent.appendChild(containerDiv);
-
-
-    yaziSuresi = yaziSuresi;
-    kelimeSayisi = kelimeSayisi;
-    yazi = yazi
+    document.body.appendChild(containerDiv);
 
     let yaziYer = document.querySelector("#yaziYer");
 
@@ -48,15 +40,13 @@ function blokokuma(yaziSuresi, kelimeSayisi, yazi) {
         setTimeout(() => {
             let yazi = kelimeler.slice(i, i + parseInt(kelimeSayisi)).join(" ");
             yaziYer.innerHTML = yazi;
-    
+
             if (i + parseInt(kelimeSayisi) >= kelimeler.length) {
                 setTimeout(() => {
                     yaziYer.innerHTML = "";
                     containerDiv.style.display = "none";
-                }, yaziSuresi);
+                }, 1500);
             }
-        }, i / parseInt(kelimeSayisi) * yaziSuresi);
+        }, i / parseInt(kelimeSayisi) * 1500);
     }
-
-
 }

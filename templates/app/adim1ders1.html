@@ -7,9 +7,19 @@
 {% block body %}
 
 <script>
-    basla(function() {
-        blokokuma(1000, 1, "Deneme amaçlı yazılmış bir metin bakalım nasıl çalışacak");
-    });
+    var etkinlikler = [
+    { fonksiyon: blokokuma, sure: 1500, kelimeSayisi: 1, yazi: "Deneme 1" },
+    { fonksiyon: arabekle, sure: 6500 },
+    { fonksiyon: blokokuma, sure: 1500, kelimeSayisi: 1, yazi: "Deneme 2 metni buda" },
+    { fonksiyon: arabekle, sure: 6500 },
+    // Diğer etkinlikler buraya eklenebilir
+];
+
+basla(function () {
+    calistirSiraIle(etkinlikler);
+});
+
+
 </script>
 
 {% endblock body %}

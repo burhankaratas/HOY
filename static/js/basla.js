@@ -1,4 +1,6 @@
 function basla(callback) {
+    console.log("basla is active")
+    
     var startDiv = document.createElement('div');
     startDiv.className = 'StartDiv';
     startDiv.style.width = '300px';
