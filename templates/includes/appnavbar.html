@@ -113,6 +113,19 @@
     }
 
   }
+
+  .ustsag {
+    display: inline-block;
+    padding: 5px;
+    padding-left:  0px;
+    padding-right: 25px;
+    border-radius: 5px;
+  }
+
+  .ustsag:hover {
+    background-color: #f7f7f7;
+    transition: 0.6s;
+  }
 </style>
 
 <div id="mySidebar" class="sidebar">
@@ -123,39 +136,41 @@
     <hr>
     <br>
   </a>
-  <a href="/dashboard" class="a"><i class="fa-brands fa-leanpub"
-      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Dersler </span> </a>
-  <a href="/alistirmalar" class="a"><i class="fa-solid fa-dumbbell"
-      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Alıştırma Yap </span> </a>
-  <a href="/ilerleme" class="a"><i class="fa-solid fa-bars-progress"
-      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> İlerlemen </span> </a>
-  <a href="/profil" class="a"><i class="fa-solid fa-user"
-      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Profil </span> </a>
-  <a href="/ayarlar" class="a"><i class="fa-solid fa-gear"
-      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Ayarlar </span> </a>
-  <a href="/logout" class="a"><i class="fa-solid fa-right-from-bracket"
-      style="font-size: 30px; color: #007bff; margin-right: 10px; float: left"></i> <span> Çıkış Yap </span> </a>
+  <a href="/dashboard" class="a"><img src="../../static/images/home.png" height="40"
+      style="font-size: 40px; color: #007bff; margin-right: 10px; float: left"></img> <span> Dersler </span> </a>
+  <a href="/alistirmalar" class="a"><img src="../../static/images/alistirma.png" height="40"
+      style="font-size: 40px; color: #007bff; margin-right: 10px; float: left"></img> <span> Alıştırma Yap </span> </a>
+  <a href="/ilerleme" class="a"><img src="../../static/images/ilerleme.png" height="40"
+      style="font-size: 40px; color: #007bff; margin-right: 10px; float: left"></img> <span> İlerlemen </span> </a>
+  <a href="/profil" class="a"><img src="../../static/images/profil.png" height="40"
+      style="font-size: 40px; color: #007bff; margin-right: 10px; float: left"></img> <span> Profil </span> </a>
+  <a href="/ayarlar" class="a"><img src="../../static/images/ayarlar.png" height="40"
+      style="font-size: 40px; color: #007bff; margin-right: 10px; float: left"></img> <span> Ayarlar </span> </a>
+  <a href="/logout" class="a"><img src="../../static/images/logout.png" height="40"
+      style="font-size: 40px; color: #007bff; margin-right: 10px; float: left"></img> <span> Çıkış Yap </span> </a>
 </div>
 
 <div class="bottom-bar">
-  <a class="mobilea" href="/dashboard"><i class="fa-brands fa-leanpub"
-      style="font-size: 40px;"></i> </a>
-  <a class="mobilea" href="/alistirmalar"><i class="fa-solid fa-dumbbell"
-      style="font-size: 40px;"></i> </a>
-  <a class="mobilea" href="/ilerleme"><i class="fa-solid fa-bars-progress"
-      style="font-size: 40px;"></i> </a>
-  <a class="mobilea" href="/profil"><i class="fa-solid fa-user"
-      style="font-size: 40px;"></i> </a>
-  <a class="mobilea" href="/ayarlar"><i class="fa-solid fa-gear"
-      style="font-size: 40px;"></i> </a>
+  <a class="mobilea" href="/dashboard" class="a"><img src="../../static/images/home.png" height="40"
+    style="font-size: 40px; color: #007bff; margin-right: 5px;"></img> </a>
+<a class="mobilea" href="/alistirmalar" class="a"><img src="../../static/images/alistirma.png" height="40"
+    style="font-size: 40px; color: #007bff; margin-right: 5px;"></img> </a>
+<a class="mobilea" href="/ilerleme" class="a"><img src="../../static/images/ilerleme.png" height="40"
+    style="font-size: 40px; color: #007bff; margin-right: 5px;"></img> </span> </a>
+<a class="mobilea" href="/profil" class="a"><img src="../../static/images/profil.png" height="40"
+    style="font-size: 40px; color: #007bff; margin-right: 5px;"></img> </span> </a>
+<a class="mobilea" href="/ayarlar" class="a"><img src="../../static/images/ayarlar.png" height="40"
+    style="font-size: 40px; color: #007bff; margin-right: 5px;"></img> </span> </a>
 </div>
 
 <div id="main">
 </div>
 
 <div id="rightSidebar" class="sidebar">
-  <span style="font-size: 15px; display: block"> <i class="fa-solid fa-coins"
-      style="margin-left: 30px; font-size: 20px;"></i> {{session["puan"]}} </span>
+  <div class="ustsag">
+    <span style="font-size: 15px; display: block"> <img src="../../static/images/coin.png" height="30"
+      style="margin-left: 30px; font-size: 20px;"></i> {{session["puan"]}}</span>
+  </div>
   <br><br>
   <div
     style="border: 1px solid #e5e5e5; background: linear-gradient(to bottom, #3498db, #9c9696); padding: 15px; border-radius: 15px; padding-bottom: 30px">

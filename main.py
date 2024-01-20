@@ -344,11 +344,32 @@ def ayarlar():
             flash("Herhangi bir değişiklik yapmadınız.", "warning")
 
         return redirect(url_for("ayarlar"))
+    
+@app.route("/addcoin")
+@login_required
+def addcoin():
+        cursor = mysql.connection.cursor()
+
+        fsorgu = "SELECT * FROM users where ID = %s"
+        cursor.execute(fsorgu, (session["id"],))
+
+        data = cursor.fetchone()
+
+        sorgu = "UPDATE users SET Points = %s WHERE ID = %s"
+        cursor.execute(sorgu, (data["Points"] + 5, session["id"]))
+
+        mysql.connection.commit()
+
+        session["puan"] = data["Points"]
+        
+        cursor.close()
+
+        return redirect(url_for("dashboard"))
+
 
 @app.route("/1/1")
 @login_required
 def adim1ders1():
-    # fonksiyonları cagırmada bir hata var. Düzelt
     return render_template("app/adim1ders1.html")
     
 
@@ -383,9 +404,13 @@ def kosullar():
 def gizlilik():
     return render_template("gizlilik.html")
 
-@app.route("/test")
+@app.route("/test", methods = ["GET", "POST"])
 def test():
-    return render_template("karalama.html")
+    if request.method == "POST":
+        return redirect(url_for("addcoin"))
+
+    elif request.method == "GET":
+        return render_template("karalama.html")
 
 @app.route("/misyonumuz")
 def misyonumuz():
@@ -394,6 +419,10 @@ def misyonumuz():
 @app.route("/sss")
 def sss():
     return render_template("sss.html")
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 if __name__ == "__main__":
     app.run(debug=True)
