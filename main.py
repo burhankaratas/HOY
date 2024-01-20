@@ -383,6 +383,15 @@ def ilerleme():
 def alistirmalar():
     return render_template("alistirmalar.html")
 
+@app.route("/tekmiciftmi", methods = ["GET", "POST"])
+@login_required
+def tekmiciftmi():
+    if request.method == "GET":
+        return render_template("app/tekmiciftmi.html")
+    
+    elif request.method == "POST":
+        return redirect(url_for("addcoin"))
+
     
 @app.route("/logout")
 @login_required

@@ -69,7 +69,7 @@ function tekmiciftmi() {
                     tekciftbutton.style.backgroundColor = "green";
 
                     if (tekbulunan == tekSayilar.length) {
-                        console.log("oyun bitti");
+                       bitir();
                     }
 
                 } else if (tekciftbutton.innerText % 2 == 0) {
@@ -87,7 +87,7 @@ function tekmiciftmi() {
                     tekciftbutton.style.backgroundColor = "green";
 
                     if (ciftbulunan == ciftSayilar.length) {
-                        console.log("oyun bitti");
+                        bitir();
                     }
                 }
             })
