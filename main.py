@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'help.dershane@gmail.com'
-app.config['MAIL_PASSWORD'] = 'fxpg luef dcpo cbhw'
+app.config['MAIL_PASSWORD'] = 'sththsrth'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -28,7 +28,7 @@ app.config["MYSQL_DB"] = "hokuveay"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 mysql = MySQL(app)
 
-app.secret_key = "wp+6#vfg0y3zg^ybi1u=yr)iny5seqf1$oy#7(hg5u!%2-4jv3"
+app.secret_key = "wp+6#vfg0y3zg^yefajv3"
 
 def login_required(f):
     @wraps(f)
